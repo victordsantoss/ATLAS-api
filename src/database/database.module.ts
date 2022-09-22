@@ -1,16 +1,17 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { BrUfEntity } from 'src/entities/bf_uf.entity';
 import { StateEntity } from 'src/entities/state.entity';
 
 @Module({
     imports: [TypeOrmModule.forRoot({
         type: 'postgres',
-        host: '172.17.0.2',
+        host: 'localhost',
         username: 'postgres',
-        password: 'admin123',
+        password: '12345',
         database: 'postgres',
-        entities: [StateEntity],
-        synchronize: true
+        entities: [StateEntity, BrUfEntity],
+        synchronize: false
     }),]
 })
 export class DatabaseModule { }
