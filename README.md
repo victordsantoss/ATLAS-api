@@ -31,8 +31,3 @@ Create NestJs Container
 ``` shell
 docker run -p 8080:8080 nest-cloud-run
 ```
-
-If necessary, for testing, upload a local bank:
-``` shell
-docker run —name postgres -e POSTGRES_PASSWORD=your_bank_password -p 5432:5432 -d postgres
-```
