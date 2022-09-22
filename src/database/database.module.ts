@@ -5,7 +5,7 @@ import { StateEntity } from 'src/entities/state.entity';
 @Module({
     imports: [TypeOrmModule.forRoot({
         type: 'postgres',
-        host: 'localhost',
+        host: '172.17.0.2',
         username: 'postgres',
         password: 'admin123',
         database: 'postgres',
