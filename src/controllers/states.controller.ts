@@ -1,6 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { ApiBody } from '@nestjs/swagger';
-import { StateDto } from 'src/dtos/state.dto';
+import { Body, Controller, Get, Param } from '@nestjs/common';
 import { StateEntity } from 'src/entities/state.entity';
 import { StatesService } from '../services/states.service';
 
@@ -9,14 +7,15 @@ export class StatesController {
 
     constructor(private readonly stateService: StatesService) { }
 
+    @Get(`/state/:cd_mun`)
+    public async getOne(@Param(`id`) cd_mun: string): Promise<StateEntity> {
+        return await this.stateService.findOne(cd_mun);
+    }
+
     @Get()
-    async getHello(): Promise<StateEntity[]>{
+    public async getAll(): Promise<StateEntity[]>{
         return await this.stateService.findAll();
     }
 
-    @Post()
-    @ApiBody({type: StateDto})
-    async create(@Body() state: StateDto): Promise<StateEntity>{
-        return await this.stateService.create(state);
-    }
+
 }
